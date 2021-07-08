@@ -1,6 +1,6 @@
 Name:          bolt
-Version:       0.5
-Release:       2
+Version:       0.9.1
+Release:       1
 Summary:       Userspace system daemon to enable security levels for Thunderbolt 3 on GNU/Linux.
 License:       LGPLv2+
 URL:           https://gitlab.freedesktop.org/bolt/bolt
@@ -57,7 +57,7 @@ The security level is set by the system firmware.
 %{_libexecdir}/boltd
 %{_unitdir}/bolt.service
 %{_udevrulesdir}/*-bolt.rules
-%{_sysconfdir}/dbus-1/system.d/org.freedesktop.bolt.conf
+%{_datadir}/dbus-1/system.d/org.freedesktop.bolt.conf
 %ghost %dir %{_localstatedir}/lib/boltd
 
 %files help
@@ -65,5 +65,8 @@ The security level is set by the system firmware.
 %{_mandir}/man8/boltd.8*
 
 %changelog
+* Thu Jul 8 2021 xuguangmin <xuguangmin@kylinos.cn> - 0.9.1-1
+- update to 0.9.1 
+
 * Thu Nov 21 2019 openEuler Buildteam <buildteam@openeuler.org> - 0.5-2
 - Package init
