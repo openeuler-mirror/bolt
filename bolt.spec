@@ -1,10 +1,11 @@
 Name:          bolt
 Version:       0.9.1
-Release:       1
+Release:       2
 Summary:       Userspace system daemon to enable security levels for Thunderbolt 3 on GNU/Linux.
 License:       LGPLv2+
 URL:           https://gitlab.freedesktop.org/bolt/bolt
 Source0:       %{url}/-/archive/%{version}/%{name}-%{version}.tar.gz
+Patch0:        fix-avoid-multiple-g_log_set_writer_func-calls.patch
 
 BuildRequires: gcc asciidoc meson libudev-devel  polkit-devel systemd
 BuildRequires: pkgconfig(gio-2.0) pkgconfig(libudev) pkgconfig(systemd)
@@ -25,7 +26,7 @@ The security level is set by the system firmware.
 %package_help
 
 %prep
-%autosetup -n %{name}-%{version}
+%autosetup -n %{name}-%{version} -p1
 
 %build
 %meson -Ddb-name=boltd
@@ -65,6 +66,9 @@ The security level is set by the system firmware.
 %{_mandir}/man8/boltd.8*
 
 %changelog
+* Wed Feb 08 2023 wulei <wulei80@h-partners.com> - 0.9.1-2
+- Fix avoid multiple g_log_set_writer_func calls
+
 * Thu Jul 8 2021 xuguangmin <xuguangmin@kylinos.cn> - 0.9.1-1
 - update to 0.9.1 
 
